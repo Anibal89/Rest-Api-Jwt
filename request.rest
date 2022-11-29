@@ -1,7 +1,6 @@
 GET http://localhost:5000/users
-
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJMdWlzIFphcGV0YSAiLCJlbWFpbCI6ImFuaWJhbHphcGV0YUBnbWFpbC5jb20iLCJpYXQiOjE2Njk3MzE1ODIsImV4cCI6MTY2OTczMTYwMn0.hdh_n2m9Kmax8c2TcC6fT500sxQK8eHNdrvOfBS7ha0
 ###
-
 POST http://localhost:5000/users
 Content-Type: application/json
 
@@ -9,7 +8,7 @@ Content-Type: application/json
     "name":"Luis Zapeta 2",
     "email": "anibalzapeta2@gmail.com",
     "password": "123456",
-    "confPassword": "1234567"
+    "confPassword": "123456"
 }
 
 ###
@@ -18,5 +17,5 @@ Content-Type: application/json
 
 {
     "email": "anibalzapeta@gmail.com",
-    "password":"1234561"
+    "password":"123456"
 }

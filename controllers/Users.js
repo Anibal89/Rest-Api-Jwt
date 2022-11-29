@@ -39,21 +39,22 @@ export const Login = async(req, res) => {
         if(!match) return res.status(400).json({msg:"wrong password"});
         const userId = user[0].id;
         const name = user[0].name;
-        const emai = user[0].emai;
-        const accessToken = jwt.sign({userId, name, emai},process.env.ACCESS_TOKEN_SECRET,{
+        const email = user[0].email;
+        const accessToken = jwt.sign({userId, name, email},process.env.ACCESS_TOKEN_SECRET,{
             expiresIn: '20s'
         });
-        const refreshToken = jwt.sign({userId, name, emai},process.env.REFRESH_TOKEN_SECRET,{
+        const refreshToken = jwt.sign({userId, name, email},process.env.REFRESH_TOKEN_SECRET,{
             expiresIn: '1d'
         });
-        await Users.update({refreshtoken: refreshToken},{
+        await Users.update({refresh_token: refreshToken},{
             where:{
                 id: userId
             }
         });
-        res.cookie('refreshToken', refreshToken,{
+        res.cookie('refreshtToken', refreshToken,{
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000
+            maxAge: 24 * 60 * 60 * 1000,
+       
         });
         res.json({accessToken});
     }catch(error){
