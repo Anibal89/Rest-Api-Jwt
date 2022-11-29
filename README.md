@@ -1,5 +1,5 @@
 # Rest-Api-Jwt
-Rest Api - Mysql - Autenticacion y peticciones 
+Rest Api - Mysql - JavaScript: Autenticacion y peticciones por medio de JsonWebToken(Cookies). 
 
 run proyect Rest-API
 
