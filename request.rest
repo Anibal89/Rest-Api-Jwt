@@ -1,14 +1,14 @@
 GET http://localhost:5000/users
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJMdWlzIFphcGV0YSAiLCJlbWFpbCI6ImFuaWJhbHphcGV0YUBnbWFpbC5jb20iLCJpYXQiOjE2Njk3MzE1ODIsImV4cCI6MTY2OTczMTYwMn0.hdh_n2m9Kmax8c2TcC6fT500sxQK8eHNdrvOfBS7ha0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJMdWlzIFphcGV0YSIsImVtYWlsIjoiYXpAZ21haWwuY29tIiwiaWF0IjoxNjY5NzU3MTgxLCJleHAiOjE2Njk3NTcyMTF9.G2BldA0aH-pQ97IzEF149Qx03iwIIxWkMSBGBvSrU04
 ###
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name":"Luis Zapeta 2",
-    "email": "anibalzapeta2@gmail.com",
-    "password": "123456",
-    "confPassword": "123456"
+    "name":"Luis Zapeta",
+    "email": "az@gmail.com",
+    "password": "123",
+    "confPassword": "123"
 }
 
 ###
@@ -16,6 +16,14 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "anibalzapeta@gmail.com",
-    "password":"123456"
+    "email": "az@gmail.com",
+    "password":"123"
 }
+
+###
+GET http://localhost:5000/token
+
+### 
+DELETE  http://localhost:5000/logout
+
+
