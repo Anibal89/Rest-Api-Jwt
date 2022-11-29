@@ -6,3 +6,4 @@ const db = new Sequelize('legacy','anibal','ReactJs100',{
 });
 
 export default db;
+
