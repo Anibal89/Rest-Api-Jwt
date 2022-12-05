@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import db from './config/Database.js';
 import router from "./routes/index.js";
+import Users from "./models/UserModel.js";
 
 dotenv.config();
 
@@ -13,13 +14,17 @@ app.listen(5000,()=> console.log('servidor corriendo en el puerto 5000'));
 try{
    await db.authenticate();
    console.log('Base de Datos Conectada...');
+   await Users.sync(); 
 } catch(error){
     console.log(error);
 }
 
 app.use(cors({
   credentials: true,
-  origin: 'http://127.0.0.1:5173'
+  origin: 'http://127.0.0.1:5173',
+  cookie: {
+    secure: 'auto'
+}
 }));
 
 

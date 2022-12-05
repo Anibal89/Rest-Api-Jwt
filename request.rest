@@ -5,10 +5,10 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name":"Luis Zapeta",
-    "email": "luis@gmail.com",
-    "password": "luis",
-    "confPassword": "luis"
+    "name":"israel",
+    "email": "israel@mail.com",
+    "password": "israel",
+    "confPassword": "israel"
 }
 
 ###
