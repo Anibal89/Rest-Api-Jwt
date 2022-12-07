@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export const getUsers = async(req, res)=> {
     try{
         const users = await Users.findAll({
-            attributes:['id','name','email']
+            attributes:['id','name','email','rol']
         });
         res.json(users);
     } catch(error) {
@@ -15,7 +15,7 @@ export const getUsers = async(req, res)=> {
 }
 
 export const Register = async(req, res) => {
-    const {name, email, password, confPassword} = req.body;
+    const {name, email, rol, password, confPassword} = req.body;
     if(password !== confPassword) return res.status(400).json({message:"Contraseña y confirmar contraseña no coinciden"});
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
@@ -23,6 +23,7 @@ export const Register = async(req, res) => {
         await Users.create({
             name: name,
             email: email,
+            rol,
             password: hashPassword
         });
         res.json({message: "Registro Exitoso exitoso"})
@@ -46,10 +47,11 @@ export const Login = async(req, res) => {
         const userId = user[0].id;
         const name = user[0].name;
         const email = user[0].email;
-        const accessToken = jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
+        const rol = user[0].rol;
+        const accessToken = jwt.sign({userId, name, email, rol}, process.env.ACCESS_TOKEN_SECRET,{
             expiresIn:'20s'
         });
-        const refreshToken = jwt.sign({userId, name, email}, process.env.REFRESH_TOKEN_SECRET,{
+        const refreshToken = jwt.sign({userId, name, email, rol}, process.env.REFRESH_TOKEN_SECRET,{
             expiresIn: '1d'
         });
         await Users.update({refresh_token: refreshToken},{
@@ -63,7 +65,7 @@ export const Login = async(req, res) => {
             secure: true,
             sameSite: "none",
         });
-        res.json({accessToken});
+        res.json({accessToken,rol});
     }catch(error){
         res.status(404).json({message: "Correo electrónico no encontrado"});
     }

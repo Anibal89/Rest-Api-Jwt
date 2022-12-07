@@ -14,7 +14,7 @@ app.listen(5000,()=> console.log('servidor corriendo en el puerto 5000'));
 try{
    await db.authenticate();
    console.log('Base de Datos Conectada...');
-   await Users.sync(); 
+   await Users.sync();  
 } catch(error){
     console.log(error);
 }
