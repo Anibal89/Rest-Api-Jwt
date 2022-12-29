@@ -23,7 +23,7 @@ export const Register = async(req, res) => {
         await Users.create({
             name: name,
             email: email,
-            rol,
+            rol:rol,
             password: hashPassword
         });
         res.json({message: "Registro Exitoso exitoso"})
